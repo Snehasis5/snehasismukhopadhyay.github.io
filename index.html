@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snehasis Mukhopadhyay - AI Safety & ML Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f5f1e8;
+            --secondary-bg: #ffffff;
+            --accent-1: #8b6f47;
+            --accent-2: #6b5536;
+            --accent-3: #d4a574;
+            --text-primary: #2d2418;
+            --text-secondary: #5a4a3a;
+            --border-color: #d4c4b0;
+            --cream-light: #faf8f3;
+            --cream-medium: #ede8dc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 100px 0 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-title-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 35px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .profile-pic-inline {
+            width: 200px;
+            height: 250px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+            position: relative;
+            background: var(--cream-light);
+        }
+
+        .profile-placeholder-inline {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--cream-medium) 0%, var(--cream-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            color: var(--accent-1);
+            font-weight: 600;
+        }
+
+        .profile-pic-inline img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.6s forwards;
+            max-width: 800px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 850px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
+            line-height: 1.8;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 25px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1s forwards;
+            flex-wrap: wrap;
+        }
+
+        .hero-link {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 10px 0;
+            border-bottom: 1.5px solid var(--accent-1);
+            transition: all 0.3s ease;
+        }
+
+        .hero-link:hover {
+            color: var(--accent-2);
+            border-bottom-color: var(--accent-2);
+            transform: translateY(-2px);
+        }
+
+        /* Section Headers */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-1);
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            line-height: 1.7;
+        }
+
+        /* Spotlight Works */
+        .spotlight-grid {
+            display: grid;
+            gap: 50px;
+        }
+
+        /* AMBEDKAR Paper Card */
+        .ambedkar-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .ambedkar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .ambedkar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-1) 0%, var(--accent-3) 100%);
+        }
+
+        .paper-header {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 30px;
+        }
+
+        .ambedkar-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Libre Baskerville', serif;
+            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.25);
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ambedkar-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .paper-title-section h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.65rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .paper-authors {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .paper-description {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            line-height: 1.75;
+        }
+
+                .research-viz-container {
+            background: var(--cream-light);
+            padding: 35px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .research-viz-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 22px;
+            color: var(--accent-2);
+            text-transform: uppercase;
+        }
+
+        .research-viz-wrapper {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .research-viz-wrapper img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .heatmap-container {
+            background: var(--cream-light);
+            padding: 35px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .heatmap-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 22px;
+            color: var(--accent-2);
+            text-transform: uppercase;
+        }
+
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 10px;
+        }
+
+        .heatmap-cell {
+            aspect-ratio: 1;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .heatmap-cell:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .heatmap-model {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            margin-bottom: 7px;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .heatmap-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Libre Baskerville', serif;
+            color: var(--text-primary);
+        }
+
+        .mit-feature-card {
+            background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
+            padding: 28px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--accent-1);
+            transition: all 0.3s ease;
+        }
+
+        .mit-feature-card:hover {
+            box-shadow: 0 6px 25px rgba(139, 111, 71, 0.2);
+        }
+
+        .mit-content {
+            flex: 1;
+        }
+
+        .mit-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 8px;
+        }
+
+        .mit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: white;
+        }
+
+        .mit-description {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .mit-link {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: white;
+            text-decoration: none;
+            padding: 10px 22px;
+            border: 1px solid white;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .mit-link:hover {
+            background: white;
+            color: var(--accent-1);
+        }
+
+        /* BioRiskBench Leaderboard */
+        .biorisk-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .biorisk-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%);
+        }
+
+        .biorisk-header {
+            margin-bottom: 35px;
+        }
+
+        .biorisk-header h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.65rem;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+        }
+
+        .biorisk-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .biorisk-metrics {
+            display: flex;
+            gap: 35px;
+            margin-bottom: 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .metric-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .leaderboard-container {
+            background: var(--cream-light);
+            padding: 45px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            min-height: 450px;
+        }
+
+        .bubble-chart {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 35px 18px;
+        }
+
+        .bubble {
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            border: 2px solid;
+            animation: bubbleFloat 3s ease-in-out infinite;
+        }
+
+        .bubble:hover {
+            transform: scale(1.12);
+            z-index: 10;
+        }
+
+        .bubble-name {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .bubble-score {
+            font-size: 1.15rem;
+            font-weight: 700;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .bubble-rank {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            width: 22px;
+            height: 22px;
+            background: var(--secondary-bg);
+            border: 2px solid;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 600;
+        }
+
+        @keyframes bubbleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Additional Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            padding: 35px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-1);
+            margin-bottom: 14px;
+        }
+
+        .project-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 18px;
+            font-size: 0.98rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .tech-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            padding: 5px 11px;
+            background: var(--cream-light);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        /* Research Experience */
+        .research-timeline {
+            position: relative;
+            padding-left: 55px;
+        }
+
+        .research-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .research-item {
+            position: relative;
+            margin-bottom: 55px;
+        }
+
+        .research-item::before {
+            content: '';
+            position: absolute;
+            left: -61px;
+            top: 7px;
+            width: 13px;
+            height: 13px;
+            background: var(--accent-1);
+            border-radius: 50%;
+            border: 3px solid var(--primary-bg);
+        }
+
+        .research-period {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-1);
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .research-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .research-institution {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .research-points {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .research-points li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 11px;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        .research-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 70px 0 35px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .footer-link {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 35px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .profile-pic-inline {
+                width: 90px;
+                height: 120px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .ambedkar-card,
+            .biorisk-card {
+                padding: 35px 25px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bubble-chart {
+                gap: 14px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-label">AI Safety & Machine Learning Research</div>
+                <div class="hero-title-section">
+                    <h1 class="hero-title">Snehasis Mukhopadhyay</h1>
+                    <div class="profile-pic-inline">
+                        <!-- To add your profile picture: 
+                             1. Uncomment the <img> tag below
+                             2. Replace "your-profile-picture.jpg" with your image filename
+                             3. Delete or comment out the placeholder div
+                        -->
+                        <img src="c:\Users\sneha\Downloads\Snehasis Profile.png" alt="Snehasis Mukhopadhyay">
+                        <!--<div class="profile-placeholder-inline">SM</div>-->
+                    </div>
+                </div>
+                <p class="hero-subtitle">Making AI Secure and Safe</p>
+                <p class="hero-description">
+                I love to experiment. I adore change and abhor stagnation. I’m currently working on model organisms, AI misalignment, and reducing catastrophic risks. Previously, my work focused on constitutional AI and adversarial attacks. I was a Summer Research Fellow at the Indian Academy of Sciences, Bangalore.
+
+I’m generally curious, slightly paranoid in a productive way, and always down to collaborate or explore new directions in AI safety and alignment. If you’re thinking about weird failure modes, unsafe generalization, or how to stress-test models properly, we’ll probably get along.
+
+I will be graduating in 2027 and am actively looking for full-time roles and internship opportunities in this space.  
+                </p>
+                <div class="hero-links">
+                    <a href="/cdn-cgi/l/email-protection#a0d3cec5c8c1d3c9d3cdd5cbc8cfd0c1c4c8d9c1d9939596e0c7cdc1c9cc8ec3cfcd" class="hero-link">Contact</a>
+                    <a href="https://linkedin.com/in/snehasis-mukhopadhyay-344519252" class="hero-link" target="_blank">LinkedIn</a>
+                    <a href="#spotlight" class="hero-link">Research</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spotlight Works -->
+        <section class="section" id="spotlight">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Spotlight Works</h2>
+                <p class="section-description">
+                    Key contributions to AI safety, focusing on constitutional alignment and risk assessment frameworks for large language models.
+                </p>
+            </div>
+
+            <div class="spotlight-grid">
+    <!-- AMBEDKAR Paper -->
+    <div class="ambedkar-card">
+        <div class="paper-header">
+            <div class="ambedkar-icon">
+                <!-- Replace with actual Ambedkar image -->
+                <img src="c:\Users\sneha\Downloads\Ambedkar logo_3.png" alt="Dr. B.R. Ambedkar">
+                <!-- Keep the "A" as fallback if image is not available -->
+                <!-- A -->
+            </div>
+            <div class="paper-title-section">
+                <h3>AMBEDKAR: A Multi-level Bias Elimination through a Decoding Approach with Knowledge Augmentation for Robust 
+            Constitutional Alignment.</h3>
+                <div class="paper-authors">S. Mukhopadhyay, A. Kasat, S. Dubey, R. Karthikeyan, et al.</div>
+            </div>
+        </div>
+
+                    <p class="paper-description">TL;DR : Large Language Models exhibit strong caste- and religion-based biases in Indian contexts that existing, Western-centric mitigation methods fail to address. We propose AMBEDKAR, an inference-time bias mitigation framework inspired by the Indian Constitution, which introduces a Constitution-Aware Decoding Layer without retraining or parameter updates. By reinterpreting speculative decoding as a fairness mechanism—where a small model generates and a constitutionally guided large model verifies—AMBEDKAR achieves up to 26.41% absolute bias reduction while remaining computationally efficient.
+                        
+                    </p>
+
+                     <div class="research-viz-container">
+                        <div class="research-viz-title">Bias Meters across Religions and Castes: Our benchmark dataset has been meticulously curated to
+represent 6 major religions and 136 caste groups, providing a comprehensive resource for stress-testing language
+models in the Indian sociocultural context. </div>
+                        <div class="research-viz-wrapper">
+                            <!-- Replace with your GIF file path -->
+                            <img src="c:\Users\sneha\Downloads\AIConstitution2_pages-to-jpg-0001.jpg" alt="AMBEDKAR Research Visualization">
+                            <!-- Alternative: You can also use a placeholder -->
+                            <!-- <div style="width: 600px; height: 400px; background: var(--cream-medium); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                                [Research Visualization GIF]
+                            </div> -->
+                        </div>
+                    </div>
+
+
+                    <div class="research-viz-container">
+                        <div class="research-viz-title">Overview of the AMBEDKAR framework: A draft language model generates speculative hypotheses, which are evaluated by a verifier model under both original and counterfactual contexts. Candidate completions are scored using distributional divergence metrics, and the token with the highest cross-context consistency and contextual stability is selected for generation.</div>
+                        <div class="research-viz-wrapper">
+                            <!-- Replace with your GIF file path -->
+                            <img src="c:\Users\sneha\Downloads\SpecDec_Diagram1.png" alt="AMBEDKAR Research Visualization">
+                            <!-- Alternative: You can also use a placeholder -->
+                            <!-- <div style="width: 600px; height: 400px; background: var(--cream-medium); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                                [Research Visualization GIF]
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div class="heatmap-container">
+                        <div class="heatmap-title">Bias Reduction Across Model Families (%)</div>
+                        <div class="heatmap-grid">
+                            <div class="heatmap-cell" style="background: rgba(139, 111, 71, 0.15);">
+                                <div class="heatmap-model">GPT-4</div>
+                                <div class="heatmap-value">18.2</div>
+                            </div>
+                            <div class="heatmap-cell" style="background: rgba(139, 111, 71, 0.3);">
+                                <div class="heatmap-model">Claude 3</div>
+                                <div class="heatmap-value">22.4</div>
+                            </div>
+                            <div class="heatmap-cell" style="background: rgba(139, 111, 71, 0.5);">
+                                <div class="heatmap-model">Llama 3</div>
+                                <div class="heatmap-value">26.4</div>
+                            </div>
+                            <div class="heatmap-cell" style="background: rgba(139, 111, 71, 0.25);">
+                                <div class="heatmap-model">Gemini</div>
+                                <div class="heatmap-value">19.8</div>
+                            </div>
+                            <div class="heatmap-cell" style="background: rgba(139, 111, 71, 0.2);">
+                                <div class="heatmap-model">Mistral</div>
+                                <div class="heatmap-value">17.5</div>
+                            </div>
+                            <div class="heatmap-cell" style="background: rgba(139, 111, 71, 0.4);">
+                                <div class="heatmap-model">Phi-3</div>
+                                <div class="heatmap-value">24.1</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mit-feature-card">
+                        <div class="mit-content">
+                            <div class="mit-badge">Featured In</div>
+                            <div class="mit-title">MIT Technology Review</div>
+                            <div class="mit-description">OpenAI is huge in India. Its models are steeped in caste bias.</div>
+                        </div>
+                        <a href="https://www.technologyreview.com/2025/10/01/1124621/openai-india-caste-bias/" class="mit-link" target="_blank">Read Article →</a>
+                    </div>
+                </div>
+                <!-- BioRiskBench -->
+                <div class="biorisk-card">
+                    <div class="biorisk-header">
+                        <h3>BioRiskBench: An Adversarial Benchmark for Dual Use Risk of Biological eapons</h3>
+                        <p class="biorisk-subtitle">
+                            TL;DR: Scaling frontier language models embeds dual use biological knowledge that remains accessible despite high refusal rates, showing that capability and biosecurity compliance are not orthogonal. Using BioRiskBench-η and a novel cognitive-drift jailbreak, we demonstrate that current alignment methods provide only brittle, surface-level defenses, with models retaining actionable wet-lab knowledge that can be reconstructed under adversarial pressure. We introduce new risk metrics to quantify this gap and argue that mitigating biological risk requires moving beyond post hoc filtering toward intrinsic latent unlearning.
+                
+                        </p>
+                        <div class="biorisk-metrics">
+                            <div class="metric">
+                                <div class="metric-dot" style="background: #dc2626;"></div>
+                                <span>High Risk</span>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-dot" style="background: #f59e0b;"></div>
+                                <span>Medium Risk</span>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-dot" style="background: #10b981;"></div>
+                                <span>Low Risk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                   
+
+                    <div class="leaderboard-container">
+                        <div class="bubble-chart" id="bubbleChart"></div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="research-viz-container">
+                        <div class="research-viz-title"> BioRiskBench is four-tiered benchmark dataset evaluating hazardous knowledge retrieval in frontier models. 
+                            Achieved ~90% attack success rate using cognitive drift attacks.</div>
+                        <div class="research-viz-wrapper">
+                            <!-- Replace with your GIF file path -->
+                            <img src="c:\Users\sneha\OneDrive\Pictures\Screenshots\Screenshot 2026-01-28 143236.png" alt="AMBEDKAR Research Visualization">
+                            <!-- Alternative: You can also use a placeholder -->
+                            <!-- <div style="width: 600px; height: 400px; background: var(--cream-medium); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                                [Research Visualization GIF]
+                            </div> -->
+                        </div>
+                    </div>
+        </section>
+
+        <!-- Additional Projects -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Additional Research</h2>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-tag">Capstone Project · 2025</div>
+                    <h3 class="project-title">Tropical Cyclone Intensity Estimation</h3>
+                    <p class="project-description">
+                        Novel dual-branch spatio-temporal architecture for cyclone intensity estimation from INSAT-3D/3DR 
+                        imagery. Achieved 5.0 knots MAE over Bay of Bengal, outperforming baselines by 18–28%.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Satellite Imagery</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">Platform Development · 2025</div>
+                    <h3 class="project-title">ALADIN: Automated LLM Development Platform</h3>
+                    <p class="project-description">
+                        Comprehensive automation platform reducing coding and deployment time by 50%. FastAPI-driven 
+                        orchestration with automated CI/CD pipelines and GitHub Pages integration.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">CI/CD</span>
+                        <span class="tech-tag">DevOps</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">Summer Research · 2025</div>
+                    <h3 class="project-title">Graph Neural Networks for Recommendations</h3>
+                    <p class="project-description">
+                        Improved recommendation performance by 12% using GNNs for user-item modeling. Implemented 
+                        GraphSAGE and GAT architectures, outperforming collaborative filtering on benchmarks.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Graph ML</span>
+                        <span class="tech-tag">GraphSAGE</span>
+                        <span class="tech-tag">PyTorch Geometric</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Experience -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Research Positions</h2>
+            </div>
+
+            <div class="research-timeline">
+                <div class="research-item">
+                    <div class="research-period">Jan 2024 – Present</div>
+                    <h3 class="research-title">Research Associate</h3>
+                    <div class="research-institution">Artificial Intelligence Institute of South Carolina · Advisor: Dr. Amitava Das</div>
+                    <ul class="research-points">
+                        <li>Representative papers: AMBEDKAR (https://arxiv.org/abs/2509.02133), ALKALI: (https://arxiv.org/abs/2506.08885)</li>
+                        <li>Created large-scale bias evaluation suite and bechmarked across a gamut of 14 LLMs</li>
+                        <li>Repurposed speculative decoding as a inference time debaising technique</li>
+                        
+                    </ul>
+                </div>
+
+                <div class="research-item">
+                    <div class="research-period">May 2025 – Jul 2025</div>
+                    <h3 class="research-title">Summer Research Fellow</h3>
+                    <div class="research-institution">Indian Academy of Sciences · Advisor: Dr. Sudershan Iyengar</div>
+                    <ul class="research-points">
+                        <li>Improved recommendation system performance by 12% using Graph Neural Networks</li>
+                        <li>Implemented GraphSAGE and Graph Attention Networks for embedding learning</li>
+                        <li>Outperformed traditional collaborative filtering on multiple benchmarks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="mailto:snehasismukhopadhyay356@gmail.com" class="footer-link">snehasismukhopadhyay356@gmail.com</a>
+                    <a href="https://linkedin.com/in/snehasis-mukhopadhyay-344519252" class="footer-link" target="_blank">LinkedIn</a>
+                    <a href="tel:+919330125362" class="footer-link">+91-9330125362</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // BioRiskBench Bubble Chart
+        const models = [
+            { name: 'Deepseek R1', score: 87.3, size: 150, risk: 'high', rank: 1 },
+            { name: 'Gemini Pro', score: 84.1, size: 142, risk: 'high', rank: 2 },
+            { name: 'GPT4o', score: 79.8, size: 132, risk: 'high', rank: 3 },
+            { name: 'Llama 3 70B', score: 73.2, size: 122, risk: 'medium', rank: 4 },
+            { name: 'Claude Sonnet', score: 68.5, size: 112, risk: 'medium', rank: 5 },
+            { name: 'Mistral Large', score: 65.9, size: 107, risk: 'medium', rank: 6 },
+            { name: 'Phi-3 Medium', score: 58.4, size: 98, risk: 'medium', rank: 7 },
+            { name: 'Llama 3 8B', score: 52.1, size: 88, risk: 'low', rank: 8 },
+            { name: 'Gemma 7B', score: 47.6, size: 83, risk: 'low', rank: 9 },
+            { name: 'Mistral 7B', score: 43.8, size: 78, risk: 'low', rank: 10 }
+        ];
+
+        const bubbleChart = document.getElementById('bubbleChart');
+
+        models.forEach((model, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            const riskColors = {
+                high: { bg: 'rgba(220, 38, 38, 0.12)', border: '#dc2626' },
+                medium: { bg: 'rgba(245, 158, 11, 0.12)', border: '#f59e0b' },
+                low: { bg: 'rgba(16, 185, 129, 0.12)', border: '#10b981' }
+            };
+
+            const colors = riskColors[model.risk];
+            
+            bubble.style.width = model.size + 'px';
+            bubble.style.height = model.size + 'px';
+            bubble.style.background = colors.bg;
+            bubble.style.borderColor = colors.border;
+            bubble.style.animationDelay = (index * 0.1) + 's';
+
+            bubble.innerHTML = `
+                <div class="bubble-rank" style="border-color: ${colors.border}; color: ${colors.border}">${model.rank}</div>
+                <div class="bubble-name">${model.name}</div>
+                <div class="bubble-score">${model.score}</div>
+            `;
+
+            bubbleChart.appendChild(bubble);
+        });
+    </script>
+</body>
+</html>
