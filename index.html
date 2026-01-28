@@ -63,9 +63,31 @@
         }
 
         .hero-title-section {
-    margin-bottom: 18px;
+    display: flex;
     align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 25px;
 }
+
+        .hero-name-block {
+    display: flex;
+    flex-direction: column;
+}
+.hero-subtitle {
+    font-size: 1.35rem;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+        .profile-pic-inline {
+    flex-shrink: 0;
+}
+
+
+
 
 .hero-subtitle {
     margin-bottom: 18px;
@@ -781,27 +803,25 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <div class="hero-label">AI Safety & Machine Learning Research</div>
                 <div class="hero-title-section">
-                    <h1 class="hero-title">Snehasis Mukhopadhyay</h1>
-                    <div class="profile-pic-inline">
-                        <!-- To add your profile picture: 
-                             1. Uncomment the <img> tag below
-                             2. Replace "your-profile-picture.jpg" with your image filename
-                             3. Delete or comment out the placeholder div
-                        -->
-                        <img src="Snehasis Profile.png" alt="Snehasis Mukhopadhyay">
-                        <!--<div class="profile-placeholder-inline">SM</div>-->
-                    </div>
-                </div>
-                <p class="hero-subtitle">Making AI Secure and Safe</p>
-                <p class="hero-description">
+    <div class="hero-name-block">
+        <h1 class="hero-title">Snehasis Mukhopadhyay</h1>
+        <p class="hero-subtitle">Making AI Secure and Safe</p>
+         <p class="hero-description">
                 I love to experiment. I adore change and abhor stagnation. I’m currently working on model organisms, AI misalignment, and reducing catastrophic risks. Previously, my work focused on constitutional AI and adversarial attacks. I was a Summer Research Fellow at the Indian Academy of Sciences, Bangalore.
 
 I’m generally curious, slightly paranoid in a productive way, and always down to collaborate or explore new directions in AI safety and alignment. If you’re thinking about weird failure modes, unsafe generalization, or how to stress-test models properly, we’ll probably get along.
 
 I will be graduating in 2027 and am actively looking for full-time roles and internship opportunities in this space.  
                 </p>
+    </div>
+
+    <div class="profile-pic-inline">
+        <img src="Snehasis Profile.png" alt="Snehasis Mukhopadhyay">
+    </div>
+</div>
+
+               
                 <div class="hero-links">
                     <a href="/cdn-cgi/l/email-protection#a0d3cec5c8c1d3c9d3cdd5cbc8cfd0c1c4c8d9c1d9939596e0c7cdc1c9cc8ec3cfcd" class="hero-link">Contact</a>
                     <a href="https://linkedin.com/in/snehasis-mukhopadhyay-344519252" class="hero-link" target="_blank">LinkedIn</a>
